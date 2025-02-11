@@ -10,4 +10,10 @@ class Controller {
     fun getRandomNumber() : Int {
         return Randoms.pickNumberInRange(0,9)
     }
+    fun getPosition() : Boolean {
+        if (getRandomNumber() >= 4) {
+            return true
+        }
+        return false
+    }
 }
