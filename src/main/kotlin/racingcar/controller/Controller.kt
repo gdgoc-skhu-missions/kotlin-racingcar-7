@@ -15,14 +15,24 @@ class Controller {
 
     fun setPosition(car: Car): Car {
         val currentRound = getRandomNumber()
-        val (_, _, carRoundPosition) = car
+        var (_, position) = car
         if (currentRound >= 4) {
-            carRoundPosition.add(true)
+            position.add(position.last()+1)
             return car
         }
-        carRoundPosition.add(false)
+        position.add(position.last())
         return car
     }
 
-    fun repeatRacing(carList : List<Car>, num: Int) = carList.forEach { car ->  setPosition(car) }
+    fun repeatRacing(carList : List<Car>, num: Int) {
+        for(i in 0 until num) {
+            carList.forEach{car -> setPosition(car);}
+        }
+    }
+
+    fun getWinnerScore(carList: List<Car>) : Int {
+        var score = ArrayList<Int>()
+        carList.forEach{car -> score.add(car.component2().last());}
+        return score.max()
+    }
 }
