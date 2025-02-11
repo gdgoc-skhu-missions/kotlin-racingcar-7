@@ -24,8 +24,5 @@ class Controller {
         return car
     }
 
-    fun repeatRacing(carList : List<Car>)  {
-        for
-    }
-
+    fun repeatRacing(carList : List<Car>, num: Int) = carList.forEach { car ->  setPosition(car) }
 }
