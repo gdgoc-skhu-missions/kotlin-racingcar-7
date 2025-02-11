@@ -35,4 +35,14 @@ class Controller {
         carList.forEach{car -> score.add(car.component2().last());}
         return score.max()
     }
+
+    fun getWinner(winnerScore : Int, carList: List<Car>) : List<String> {
+        var winnerList = ArrayList<String>()
+        for (car in carList) {
+            if (winnerScore == car.component2().last()) {
+                winnerList.add(car.component1())
+            }
+        }
+        return winnerList
+    }
 }
