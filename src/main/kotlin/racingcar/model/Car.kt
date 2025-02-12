@@ -1,5 +1,7 @@
 package racingcar.model
 
-data class Car (
-    val name: String
+class Car (
+    val name: String,
+    var position: Int = 0
+//    var round : MutableList<Boolean>,
 )
