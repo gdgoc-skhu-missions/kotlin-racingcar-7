@@ -12,7 +12,7 @@ object Output {
     fun printPosition(playerList: List<Car>) {
         playerList.forEach { car ->
             print(car.name)
-            print(":")
+            print(" : ")
             repeat(car.position){ printRoundResult() }
             println()}
     }
