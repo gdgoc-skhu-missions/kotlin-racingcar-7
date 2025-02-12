@@ -1,45 +1,35 @@
 package racingcar.controller
+
+import Car
 import camp.nextstep.edu.missionutils.Randoms
-import racingcar.model.Car
 
 object Controller {
-//    fun splitCarName(carName : String) : List<String> = carName.split(",")
 
-    fun getRandomNumber() : Int = Randoms.pickNumberInRange(0,9)
+    //  fun splitCarName(carName : String) : List<String> = carName.split(",")
+    private fun getRandomNumber(): Int = Randoms.pickNumberInRange(0, 9)
 
-//    fun getPosition(arr : ArrayList<List<String>>):ArrayList<ArrayList<String>>  {
-//    val currentRound = getRandomNumber()
-//    if (currentRound >= 4) {
-//
-//    }
-
-    fun setPosition(car: Car): Car { //전진 여부 결정 함수
+    private fun setPosition(car: Car): Car { //전진 여부 결정 함수
         val currentRound = getRandomNumber()
-        if (currentRound >= 4) {
-            car.position += 1
+
+        if (currentRound >= 4) { // 전진이 4이상이면
+            car.move()
             return car
         }
         return car
     }
 
-    fun repeatRacing(carList : List<Car>) { // 차를 전진시킴
-        carList.forEach{car -> setPosition(car);}
+    fun repeatRacing(carList: List<Car>) { // 카 리스트를 반복해서 레이싱 경주 시키기
+        carList.forEach { car -> setPosition(car); }
     }
 
-    fun getWinnerScore(carList: List<Car>) : Int {
-        var score = ArrayList<Int>()
-        carList.forEach{car -> score.add(car.position)}
+    private fun getWinnerScore(carList: List<Car>): Int { // 위너 점수 저장
+        val score = ArrayList<Int>()
+        carList.forEach { car -> score.add(car.position) }
         return score.max()
     }
 
-    fun getWinner(carList: List<Car>) : List<String> {
-        val winnerScore = getWinnerScore(carList)
-        var winnerList = ArrayList<String>()
-        for (car in carList) {
-            if (winnerScore == car.position) {
-                winnerList.add(car.name)
-            }
-        }
-        return winnerList
-    }
+    fun getWinner(carList: List<Car>): List<String> =
+        carList.filter { it.position == getWinnerScore(carList) }
+            .map { it.name }
+
 }
