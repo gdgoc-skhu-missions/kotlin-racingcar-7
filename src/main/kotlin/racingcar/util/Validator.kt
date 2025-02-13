@@ -9,8 +9,17 @@ object Validator {
     fun isNumBlack(num: String) {
         if (num.isBlank()) { Error.notInputNum() }
     }
+    fun isNumDigit(n: Char) {
+        if(!n.isDigit()) { Error.inputNotInt() }
+    }
+    fun checkNumDigit(num: String) {
+        for (n in num) { isNumDigit(n) }
+    }
     fun isNumPositive(num: String) {
         if (num.toInt() <= 0) { Error.inputNotPositive() }
+    }
+    fun isNumInt(num: String) {
+        if (num.toDouble() % 1 != 0.0) { Error.inputNotInt() }
     }
     fun countName(name: String) {
         if (name.length >5 ) { Error.overInputCar() }

@@ -10,6 +10,8 @@ object Input {
     fun getNum(): Int {
         val num = Console.readLine()
         Validator.isNumBlack(num)
+        Validator.checkNumDigit(num)
+        Validator.isNumInt(num)
         Validator.isNumPositive(num)
         return num.toInt()
     }
