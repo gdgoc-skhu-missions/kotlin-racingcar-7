@@ -2,8 +2,8 @@ package racingcar.controller
 import camp.nextstep.edu.missionutils.Randoms
 import racingcar.model.Car
 
-class Controller {
-    fun splitCarName(carName : String) : List<String> = carName.split(",")
+object Controller {
+//    fun splitCarName(carName : String) : List<String> = carName.split(",")
 
     fun getRandomNumber() : Int = Randoms.pickNumberInRange(0,9)
 
@@ -13,34 +13,31 @@ class Controller {
 //
 //    }
 
-    fun setPosition(car: Car): Car {
+    fun setPosition(car: Car): Car { //전진 여부 결정 함수
         val currentRound = getRandomNumber()
-        var (_, position) = car
         if (currentRound >= 4) {
-            position.add(position.last()+1)
+            car.position += 1
             return car
         }
-        position.add(position.last())
         return car
     }
 
-    fun repeatRacing(carList : List<Car>, num: Int) {
-        for(i in 0 until num) {
-            carList.forEach{car -> setPosition(car);}
-        }
+    fun repeatRacing(carList : List<Car>) { // 차를 전진시킴
+        carList.forEach{car -> setPosition(car);}
     }
 
     fun getWinnerScore(carList: List<Car>) : Int {
         var score = ArrayList<Int>()
-        carList.forEach{car -> score.add(car.component2().last());}
+        carList.forEach{car -> score.add(car.position)}
         return score.max()
     }
 
-    fun getWinner(winnerScore : Int, carList: List<Car>) : List<String> {
+    fun getWinner(carList: List<Car>) : List<String> {
+        val winnerScore = getWinnerScore(carList)
         var winnerList = ArrayList<String>()
         for (car in carList) {
-            if (winnerScore == car.component2().last()) {
-                winnerList.add(car.component1())
+            if (winnerScore == car.position) {
+                winnerList.add(car.name)
             }
         }
         return winnerList
