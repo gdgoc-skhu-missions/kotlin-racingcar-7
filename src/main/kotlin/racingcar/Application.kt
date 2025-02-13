@@ -16,9 +16,9 @@ fun main() {
     val carList = ArrayList<Car>()
 
     Output.printResultMessage()
-    carNameList.forEach{name -> carList.add(Car(name))}
+    carNameList.forEach { name -> carList.add(Car(name)) }
 
-    for(i in 0..num-1){
+    for (i in 0..num - 1) {
         Controller.repeatRacing(carList)
         Output.printPosition(carList)
     }

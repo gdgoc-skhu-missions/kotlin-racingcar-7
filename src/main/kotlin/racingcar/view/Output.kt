@@ -1,4 +1,5 @@
 package racingcar.view
+
 import Car
 
 
@@ -13,12 +14,13 @@ object Output {
         playerList.forEach { car ->
             print(car.name)
             print(" : ")
-            repeat(car.position){ printRoundResult() }
-            println()}
+            repeat(car.position) { printRoundResult() }
+            println()
+        }
         println()
     }
 
     private fun printRoundResult() = print("-")
 
-    fun printWinner(winnerList : List<String>) = println("최종 우승자 : ${winnerList.joinToString(",")}")
+    fun printWinner(winnerList: List<String>) = println("최종 우승자 : ${winnerList.joinToString(",")}")
 }
