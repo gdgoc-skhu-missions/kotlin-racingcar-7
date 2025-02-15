@@ -1,7 +1,5 @@
 package racingcar.util
 
-import racingcar.util.Error
-
 object Validator {
     fun isBlank(name: String) {
         if (name.isBlank()) {
