@@ -30,5 +30,4 @@ object Controller {
     fun getWinner(carList: List<Car>): List<String> =
         carList.filter { it.position == getWinnerScore(carList) }
             .map { it.name }
-
 }
