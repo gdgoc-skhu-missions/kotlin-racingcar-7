@@ -10,21 +10,12 @@ object Controller {
 
     private fun getRandomNumber(): Int = Randoms.pickNumberInRange(MIN_RANGE, MAX_RANGE)
 
-    //    fun setPosition(car: Car): Car {
-//        val currentRound = getRandomNumber()
-//
-//        if (currentRound >= MOVABLE_NUMBER) {
-//            car.move()
-//            return car
-//        }
-//        return car
-//    }
-    fun setPosition(car: Car): Car {
+    private fun setPosition(car: Car): Car {
         car.move()
         return car
     }
 
-    fun alwjd(car: Car, randomNumber: Int): Car {
+    private fun startRacingGame(car: Car, randomNumber: Int): Car {
         if (randomNumber >= MOVABLE_NUMBER) {
             setPosition(car)
             return car
@@ -33,8 +24,7 @@ object Controller {
     }
 
     fun repeatRacing(carList: List<Car>) {
-        carList.forEach { car -> alwjd(car, getRandomNumber()) }
-      //  carList.forEach { car -> setPosition(car); }
+        carList.forEach { car -> startRacingGame(car, getRandomNumber()) }
     }
 
     private fun getWinnerScore(carList: List<Car>): Int {

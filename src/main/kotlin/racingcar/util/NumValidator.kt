@@ -18,15 +18,21 @@ object NumValidator {
         num.all { it.isDigit() }
     }
 
-    fun isNumPositive(num: String) {
+    private fun isNumPositive(num: String) {
         if (num.toInt() <= 0) {
             Error.INPUT_NOT_POSITIVE.throwErrorMessage()
         }
     }
 
-    fun isNumInt(num: String) {
+    private fun isNumInt(num: String) {
         if (num.toDouble() % 1 != 0.0) {
             Error.INPUT_NOT_INT.throwErrorMessage()
         }
+    }
+
+    fun validateNum(num: String) {
+        isNumInt(num)
+        isNumInt(num)
+        isNumPositive(num)
     }
 }

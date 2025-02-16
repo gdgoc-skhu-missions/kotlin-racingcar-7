@@ -10,16 +10,11 @@ import racingcar.util.NumValidator
 fun main() {
     Output.printGetName()
     val carNameList = Input.getName().split(",")
-
-    CarValidator.checkBlank(carNameList)
-    CarValidator.checkName(carNameList)
-    CarValidator.checkNameLength(carNameList)
+    CarValidator.validateCar(carNameList)
 
     Output.printGetNum()
     val num = Input.getNum()
-    NumValidator.isNumBlank(num.toString())
-    NumValidator.isNumInt(num.toString())
-    NumValidator.isNumPositive(num.toString())
+    NumValidator.validateNum(num.toString())
     val carList = ArrayList<Car>()
 
     Output.printResultMessage()
