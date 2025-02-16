@@ -15,7 +15,7 @@ object Controller {
         return car
     }
 
-    private fun startRacingGame(car: Car, randomNumber: Int): Car {
+    fun startRacingGame(car: Car, randomNumber: Int): Car {
         if (randomNumber >= MOVABLE_NUMBER) {
             setPosition(car)
             return car
@@ -34,7 +34,6 @@ object Controller {
     }
 
     fun getWinner(carList: List<Car>): List<String> =
-        carList.filter { it.position == getWinnerScore(carList) }
-            .map { it.name }
+        carList.filter { it.position == getWinnerScore(carList) }.map { it.name }
 
 }
