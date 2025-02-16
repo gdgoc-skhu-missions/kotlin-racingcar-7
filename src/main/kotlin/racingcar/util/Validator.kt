@@ -1,23 +1,23 @@
 package racingcar.util
 
-import racingcar.util.Error
+
 
 object Validator {
     fun isBlank(name: String) {
         if (name.isBlank()) {
-            Error.notInputCar()
+            Error.NOT_INPUT_CAR.throwErrorMessage()
         }
     }
 
     fun isNumBlack(num: String) {
         if (num.isBlank()) {
-            Error.notInputNum()
-        }
+
+            Error.NOT_INPUT_NUM.throwErrorMessage()        }
     }
 
     fun isNumDigit(n: Char) {
         if (!n.isDigit()) {
-            Error.inputNotInt()
+            Error.INPUT_NOT_INT.throwErrorMessage()
         }
     }
 
@@ -29,19 +29,19 @@ object Validator {
 
     fun isNumPositive(num: String) {
         if (num.toInt() <= 0) {
-            Error.inputNotPositive()
+            Error.INPUT_NOT_POSITIVE.throwErrorMessage()
         }
     }
 
     fun isNumInt(num: String) {
         if (num.toDouble() % 1 != 0.0) {
-            Error.inputNotInt()
+            Error.INPUT_NOT_INT.throwErrorMessage()
         }
     }
 
     fun countName(name: String) {
         if (name.length > 5) {
-            Error.overInputCar()
+            Error.OVER_INPUT_CAR.throwErrorMessage()
         }
     }
 
