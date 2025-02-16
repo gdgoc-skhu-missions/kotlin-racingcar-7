@@ -6,5 +6,7 @@ object Input {
 
     fun getName(): String = Console.readLine()
 
-    fun getNum(): Int = Console.readLine().toInt()
+    fun getNum(): Int =
+          Console.readLine().toInt()
+
 }
