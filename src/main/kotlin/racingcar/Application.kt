@@ -9,8 +9,10 @@ import racingcar.util.Validator
 fun main() {
     Output.printGetName()
     val carNameList = Input.getName().split(",")
+
     Validator.checkBlank(carNameList)
     Validator.checkNameLength(carNameList)
+
     Output.printGetNum()
     val num = Input.getNum()
     val carList = ArrayList<Car>()
